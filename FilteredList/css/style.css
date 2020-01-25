@@ -60,6 +60,7 @@ a.prioritizer-hyperlink, a.prioritizer-hyperlink:visited{
 
 .tags {
     margin-top: 10px;
+    width: 300px;
     display: table-cell;
 }
 
@@ -71,10 +72,6 @@ a.prioritizer-hyperlink, a.prioritizer-hyperlink:visited{
 }
 
 .selectable-tag {
-    cursor: pointer;
-}
-
-.sort {
     cursor: pointer;
 }
 
@@ -96,20 +93,4 @@ a.prioritizer-hyperlink, a.prioritizer-hyperlink:visited{
 
 .unselected {
     background-color: darkgray;
-}
-
-.priority {
-    width: 50px;
-}
-
-.subject {
-    width: 300px;
-}
-
-.description {
-    width: 500px;
-}
-
-.tags {
-    width: 300px;
 }

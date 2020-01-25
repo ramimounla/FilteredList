@@ -1,8 +1,7 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import DataSetInterfaces = ComponentFramework.PropertyHelper.DataSetApi;
 type DataSet = ComponentFramework.PropertyTypes.DataSet;
-import * as $ from 'jquery';
-import moment = require("moment");
+// import * as $ from 'jquery';
 
 export class FilteredList implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
@@ -60,27 +59,7 @@ export class FilteredList implements ComponentFramework.StandardControl<IInputs,
 			headers.className = "header";
 			context.parameters.recordSet.columns.forEach(column => {
 				var span = <HTMLSpanElement>document.createElement("span");
-
-				//Unless it's a tag header, add a sort class to the header
-				if (column.displayName !== 'Tags') {
-					let sanitizedName = this.sanitizeNameToCss(column.displayName);
-					span.className = "element " + sanitizedName;
-					span.addEventListener("click", (ev: MouseEvent) => {
-						console.trace("Sort " + (<HTMLSpanElement>ev.target).innerText);
-
-						//TODO sort both ways
-						let reOrderedDivs = Array.from(this._container.getElementsByClassName('row')).sort((a, b) => { return $(a).find("." + sanitizedName).text().localeCompare($(b).find("." + sanitizedName).text()) });
-
-						//Remove old ones
-						reOrderedDivs.forEach(element => { this._container.removeChild(element) });
-
-						//Add new ones
-						reOrderedDivs.forEach(element => { this._container.appendChild(element) });
-
-					});
-				}
-
-
+				column.displayName !== 'Tags' && (span.className = "element "); //if not equals tag
 				span.innerText = column.displayName;
 				headers.appendChild(span);
 			});
@@ -106,35 +85,6 @@ export class FilteredList implements ComponentFramework.StandardControl<IInputs,
 						});
 
 						recordDiv.appendChild(tagDiv);
-					}
-					else if (column.displayName == "Subject") {
-						var span = <HTMLSpanElement>document.createElement("span");
-						span.className = "element " + this.sanitizeNameToCss(column.displayName);;
-
-						var hyperlink = document.createElement("a");
-						hyperlink.href = "https://my.crm6.dynamics.com/";
-						hyperlink.className = "prioritizer-hyperlink";
-						hyperlink.innerText = <string>recordSet.records[recordId].getValue(column.name);
-						span.appendChild(hyperlink);
-						recordDiv.appendChild(span);
-					}
-					else if (column.displayName.toLowerCase().includes("date")) {
-						var span = <HTMLSpanElement>document.createElement("span");
-						span.className = "element " + this.sanitizeNameToCss(column.displayName);
-						if (recordSet.records[recordId].getValue(column.name) != null)
-							span.innerText = moment(<string>recordSet.records[recordId].getValue(column.name), "YYYY-MM-DDTHH:mm:ss.SSSZ").format("YYYY-MM-DD");
-						recordDiv.appendChild(span);
-					}
-					else if (column.displayName.toLowerCase().includes("project")) {
-						var span = <HTMLSpanElement>document.createElement("span");
-						span.className = "element " + this.sanitizeNameToCss(column.displayName);
-
-						var hyperlink = document.createElement("a");
-						hyperlink.href = "https://mycrm.crm6.dynamics.com/";
-						hyperlink.className = "prioritizer-hyperlink";
-						hyperlink.innerText = (<ComponentFramework.EntityReference>recordSet.records[recordId].getValue(column.name)).name;
-						span.appendChild(hyperlink);
-						recordDiv.appendChild(span);
 					}
 					else {
 						var span = <HTMLSpanElement>document.createElement("span");
