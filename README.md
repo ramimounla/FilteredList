@@ -1,8 +1,10 @@
 # Filtered List
 A tabled record viewer that provides tag filtering capability.
 
-# Screenshots
+## Release
+Download the latest release from the [release tab](../../releases/latest)
 
+# Screenshots
 ![PCF sub grid with tag filtering](../../blob/master/Screenshots/Filtered%20List%20-%20Full.png?raw=true)
 
 
