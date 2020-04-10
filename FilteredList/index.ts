@@ -3,7 +3,7 @@ import DataSetInterfaces = ComponentFramework.PropertyHelper.DataSetApi;
 type DataSet = ComponentFramework.PropertyTypes.DataSet;
 // import * as $ from 'jquery';
 
-export class FilteredList implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+export class Grid implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
 	private _container: HTMLDivElement;
 	private _select: HTMLDivElement;
