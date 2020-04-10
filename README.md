@@ -17,3 +17,7 @@ PM> npm install
 PM> npm run build
 PM> npm start
 ```
+
+Included is the source is a sample file with the expected semi-colon delimited "Tags” column. If you want to replicate it with your own dataset (view), ensure it contains a column named “Tags” with a semi-colon delimiting tag names.
+
+Tag colouring is driven by the CSS file also included with the source.
